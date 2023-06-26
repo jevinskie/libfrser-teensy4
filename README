@@ -1,3 +1,5 @@
+Teensy 4.x adaptation
+
 This is the hardware-independent parts of frser pulled out 
 so one can easily use them in different flashers.
 Also included some hardware-specific bits (SPI) that can
