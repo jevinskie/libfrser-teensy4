@@ -629,13 +629,17 @@ void frser_operation(uint8_t op) {
 
 }
 
+void frser_loop(void) {
+	uint8_t op;
+	FRSER_FEAT_PRE_OPRX_HOOK();
+	op = RECEIVE();
+	FRSER_FEAT_POST_OPRX_HOOK();
+	frser_operation(op);
+}
+
 void frser_main(void) {
 	frser_init();
 	for(;;) {
-		uint8_t op;
-		FRSER_FEAT_PRE_OPRX_HOOK();
-		op = RECEIVE();
-		FRSER_FEAT_POST_OPRX_HOOK();
-		frser_operation(op);
+		frser_loop();
 	}
 }
